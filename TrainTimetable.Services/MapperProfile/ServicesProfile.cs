@@ -18,12 +18,14 @@ public class ServicesProfile : Profile
         #region Roles
 
         CreateMap<Role, RoleModel>().ReverseMap();
+        CreateMap<Role, UpdateRoleModel>().ReverseMap();
 
         #endregion
 
         #region Tickets
 
         CreateMap<Ticket, TicketModel>().ReverseMap();
+        CreateMap<Ticket, UpdateTicketModel>().ReverseMap();
 
         #endregion
 
