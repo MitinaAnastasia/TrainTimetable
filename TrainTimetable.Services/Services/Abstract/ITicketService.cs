@@ -1,0 +1,14 @@
+using TrainTimetable.Services.Models;
+
+namespace TrainTimetable.Services.Abstract;
+
+public interface ITicketService
+{
+    TicketModel GetTicket(Guid id);
+
+    TicketModel UpdateTicket(Guid id, UpdateTicketModel ticket);
+
+    void DeleteTicket(Guid id);
+
+    PageModel<TicketModel> GetTickets(int limit = 20, int offset = 0);
+}

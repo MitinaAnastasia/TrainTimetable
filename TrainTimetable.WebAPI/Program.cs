@@ -4,6 +4,7 @@ using Serilog;
 using TrainTimetable.Entities;
 using Microsoft.EntityFrameworkCore;
 using TrainTimetable.Repository;
+using TrainTimetable.Services;
 
 
 var configuration = new ConfigurationBuilder()
@@ -15,8 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddSerilogConfiguration(); //Add serilog
 builder.Services.AddDbContextConfiguration(configuration);
 builder.Services.AddVersioningConfiguration(); //add api versioning
+builder.Services.AddMapperConfiguration();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerConfiguration(); //add swagger configuration
+builder.Services.AddRepositoryConfiguration();
+builder.Services.AddBusinessLogicConfiguration();
 
 builder.Services.AddScoped<DbContext, Context>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -37,4 +41,19 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+try
+{
+    Log.Information("Application starting...");
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Error("Application finished with error {error}", ex);
+}
+finally
+{
+    Log.Information("Application stopped");
+    Log.CloseAndFlush();
+}
+

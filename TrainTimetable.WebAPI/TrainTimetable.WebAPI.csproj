@@ -18,11 +18,18 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="FluentValidation" Version="11.2.2"/>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.2"/>
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.1"/>
+    <PackageReference Include="AutoMapper" Version="12.0.0"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0"/>
   </ItemGroup>
 
    <ItemGroup>
     <ProjectReference Include="..\TrainTimetable.Entities\TrainTimetable.Entities.csproj" />
     <ProjectReference Include="..\TrainTimetable.Repository\TrainTimetable.Repository.csproj" />
+    <ProjectReference Include="..\TrainTimetable.Services\TrainTimetable.Services.csproj"/>
+    <ProjectReference Include="..\TrainTimetable.Shared\TrainTimetable.Shared.csproj"/>
   </ItemGroup>
 
 </Project>

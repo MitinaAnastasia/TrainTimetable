@@ -7,43 +7,43 @@ using Microsoft.AspNetCore.Mvc;
 namespace TrainTimetable.Controllers
 {
     /// <summary>
-    /// Trains endpoints
+    /// Roles endpoints
     /// </summary>
     [ProducesResponseType(200)]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class TrainsController : ControllerBase
+    public class RolesController : ControllerBase
     {
-        private readonly ITrainService trainService;
+        private readonly IRoleService roleService;
         private readonly IMapper mapper;
 
         /// <summary>
-        /// Trains controller
+        /// Roles controller
         /// </summary>
-        public TrainsController(ITrainService trainService, IMapper mapper)
+        public RolesController(IRoleService roleService, IMapper mapper)
         {
-            this.trainService = trainService;
+            this.roleService = roleService;
             this.mapper = mapper;
         }
         /// <summary>
-        /// Get Trains by pages
+        /// Get Roles by pages
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetTrains([FromQuery] int limit = 20, [FromQuery] int offset = 0)
+        public IActionResult GetRoles([FromQuery] int limit = 20, [FromQuery] int offset = 0)
         {
-            var pageModel = trainService.GetTrains(limit, offset);
-            return Ok(mapper.Map<PageResponse<TrainPreviewResponse>>(pageModel));
+            var pageModel = roleService.GetRoles(limit, offset);
+            return Ok(mapper.Map<PageResponse<RolePreviewResponse>>(pageModel));
         }
 
 
         /// <summary>
-        /// Update Train
+        /// Update Role
         /// </summary>
         [HttpPut]
         [Route("{id}")]
-        public IActionResult UpdateTrain([FromRoute] Guid id, [FromBody] UpdateTrainRequest model)
+        public IActionResult UpdateRole([FromRoute] Guid id, [FromBody] UpdateRoleRequest model)
         {
             var validationResult = model.Validate();
             if (!validationResult.IsValid)
@@ -52,9 +52,9 @@ namespace TrainTimetable.Controllers
             }
             try
             {
-                var resultModel = trainService.UpdateTrain(id, mapper.Map<UpdateTrainModel>(model));
+                var resultModel = roleService.UpdateRole(id, mapper.Map<UpdateRoleModel>(model));
 
-                return Ok(mapper.Map<TrainResponse>(resultModel));
+                return Ok(mapper.Map<RoleResponse>(resultModel));
             }
             catch (Exception ex)
             {
@@ -63,15 +63,15 @@ namespace TrainTimetable.Controllers
         }
 
         /// <summary>
-        /// Delete Train
+        /// Delete Role
         /// </summary>
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteTrain([FromRoute] Guid id)
+        public IActionResult DeleteRole([FromRoute] Guid id)
         {
             try
             {
-                trainService.DeleteTrain(id);
+                roleService.DeleteRole(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -81,16 +81,16 @@ namespace TrainTimetable.Controllers
         }
 
         /// <summary>
-        /// Get Train
+        /// Get Role
         /// </summary>
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetTrain([FromRoute] Guid id)
+        public IActionResult GetRole([FromRoute] Guid id)
         {
             try
             {
-                var trainModel = trainService.GetTrain(id);
-                return Ok(mapper.Map<TrainResponse>(trainModel));
+                var roleModel = roleService.GetRole(id);
+                return Ok(mapper.Map<RoleResponse>(roleModel));
             }
             catch (Exception ex)
             {

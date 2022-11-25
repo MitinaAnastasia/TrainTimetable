@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTimetable.Entities", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTimetable.Repository", "TrainTimetable.Repository\TrainTimetable.Repository.csproj", "{6D91EC00-7363-4C75-B49E-D7659D5B44B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTimetable.Services", "TrainTimetable.Services\TrainTimetable.Services.csproj", "{1728623B-D215-4DC5-993A-37141F986273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTimetable.Shared", "TrainTimetable.Shared\TrainTimetable.Shared.csproj", "{8B3F74DA-FE83-4D3A-A76F-8A4C0B39CEDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{6D91EC00-7363-4C75-B49E-D7659D5B44B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D91EC00-7363-4C75-B49E-D7659D5B44B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D91EC00-7363-4C75-B49E-D7659D5B44B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1728623B-D215-4DC5-993A-37141F986273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1728623B-D215-4DC5-993A-37141F986273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1728623B-D215-4DC5-993A-37141F986273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1728623B-D215-4DC5-993A-37141F986273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3F74DA-FE83-4D3A-A76F-8A4C0B39CEDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3F74DA-FE83-4D3A-A76F-8A4C0B39CEDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3F74DA-FE83-4D3A-A76F-8A4C0B39CEDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3F74DA-FE83-4D3A-A76F-8A4C0B39CEDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

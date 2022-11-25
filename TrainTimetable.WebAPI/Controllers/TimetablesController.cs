@@ -7,43 +7,43 @@ using Microsoft.AspNetCore.Mvc;
 namespace TrainTimetable.Controllers
 {
     /// <summary>
-    /// Trains endpoints
+    /// Timetables endpoints
     /// </summary>
     [ProducesResponseType(200)]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class TrainsController : ControllerBase
+    public class TimetablesController : ControllerBase
     {
-        private readonly ITrainService trainService;
+        private readonly ITimetableService timetableService;
         private readonly IMapper mapper;
 
         /// <summary>
-        /// Trains controller
+        /// Timetables controller
         /// </summary>
-        public TrainsController(ITrainService trainService, IMapper mapper)
+        public TimetablesController(ITimetableService timetableService, IMapper mapper)
         {
-            this.trainService = trainService;
+            this.timetableService = timetableService;
             this.mapper = mapper;
         }
         /// <summary>
-        /// Get Trains by pages
+        /// Get Timetables by pages
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetTrains([FromQuery] int limit = 20, [FromQuery] int offset = 0)
+        public IActionResult GetTimetables([FromQuery] int limit = 20, [FromQuery] int offset = 0)
         {
-            var pageModel = trainService.GetTrains(limit, offset);
-            return Ok(mapper.Map<PageResponse<TrainPreviewResponse>>(pageModel));
+            var pageModel = timetableService.GetTimetables(limit, offset);
+            return Ok(mapper.Map<PageResponse<TimetablePreviewResponse>>(pageModel));
         }
 
 
         /// <summary>
-        /// Update Train
+        /// Update Timetable
         /// </summary>
         [HttpPut]
         [Route("{id}")]
-        public IActionResult UpdateTrain([FromRoute] Guid id, [FromBody] UpdateTrainRequest model)
+        public IActionResult UpdateTimetable([FromRoute] Guid id, [FromBody] UpdateTimetableRequest model)
         {
             var validationResult = model.Validate();
             if (!validationResult.IsValid)
@@ -52,9 +52,9 @@ namespace TrainTimetable.Controllers
             }
             try
             {
-                var resultModel = trainService.UpdateTrain(id, mapper.Map<UpdateTrainModel>(model));
+                var resultModel = timetableService.UpdateTimetable(id, mapper.Map<UpdateTimetableModel>(model));
 
-                return Ok(mapper.Map<TrainResponse>(resultModel));
+                return Ok(mapper.Map<TimetableResponse>(resultModel));
             }
             catch (Exception ex)
             {
@@ -63,15 +63,15 @@ namespace TrainTimetable.Controllers
         }
 
         /// <summary>
-        /// Delete Train
+        /// Delete Timetable
         /// </summary>
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteTrain([FromRoute] Guid id)
+        public IActionResult DeleteTimetable([FromRoute] Guid id)
         {
             try
             {
-                trainService.DeleteTrain(id);
+                timetableService.DeleteTimetable(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -81,16 +81,16 @@ namespace TrainTimetable.Controllers
         }
 
         /// <summary>
-        /// Get Train
+        /// Get Timetable
         /// </summary>
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetTrain([FromRoute] Guid id)
+        public IActionResult GetTimetable([FromRoute] Guid id)
         {
             try
             {
-                var trainModel = trainService.GetTrain(id);
-                return Ok(mapper.Map<TrainResponse>(trainModel));
+                var timetableModel = timetableService.GetTimetable(id);
+                return Ok(mapper.Map<TimetableResponse>(timetableModel));
             }
             catch (Exception ex)
             {
