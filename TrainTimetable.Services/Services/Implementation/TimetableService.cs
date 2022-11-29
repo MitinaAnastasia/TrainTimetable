@@ -50,6 +50,12 @@ public class TimetableService : ITimetableService
         };
     }
 
+    TimetableModel ITimetableService.AddTimetable(TimetableModel timetableModel)
+    {
+        timetablesRepository.Save(mapper.Map<Entities.Models.Timetable>(timetableModel));
+        return timetableModel;
+    }
+
     public TimetableModel UpdateTimetable(Guid id, UpdateTimetableModel timetable)
     {
         var existingTimetable = timetablesRepository.GetById(id);

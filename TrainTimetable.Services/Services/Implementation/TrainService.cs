@@ -51,6 +51,13 @@ public class TrainService : ITrainService
         };
     }
 
+    TrainModel ITrainService.AddTrain(TrainModel trainModel)
+    {
+        trainsRepository.Save(mapper.Map<Entities.Models.Train>(trainModel));
+        return trainModel;
+    }
+
+
     public TrainModel UpdateTrain(Guid id, UpdateTrainModel train)
     {
         var existingTrain = trainsRepository.GetById(id);

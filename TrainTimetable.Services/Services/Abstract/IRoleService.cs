@@ -7,6 +7,7 @@ public interface IRoleService
     RoleModel GetRole(Guid id);
 
     RoleModel UpdateRole(Guid id, UpdateRoleModel role);
+    RoleModel AddRole(RoleModel roleModel);
 
     void DeleteRole(Guid id);
 

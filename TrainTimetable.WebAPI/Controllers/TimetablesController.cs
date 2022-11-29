@@ -39,6 +39,19 @@ namespace TrainTimetable.Controllers
 
 
         /// <summary>
+        /// Add Timetable
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult AddTimetable([FromBody] TimetableModel timetable)
+        {
+            var response = timetableService.AddTimetable(timetable);
+            return Ok(response);
+        }
+
+
+
+        /// <summary>
         /// Update Timetable
         /// </summary>
         [HttpPut]

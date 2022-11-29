@@ -62,6 +62,18 @@ namespace TrainTimetable.Controllers
             }
         }
 
+         /// <summary>
+        /// Add Ticket
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult AddTicket([FromBody] TicketModel ticket)
+        {
+            var response = ticketService.AddTicket(ticket);
+            return Ok(response);
+        }
+
+
         /// <summary>
         /// Delete Ticket
         /// </summary>

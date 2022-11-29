@@ -16,6 +16,12 @@ public class RoleService : IRoleService
         this.mapper = mapper;
     }
 
+    RoleModel IRoleService.AddRole(RoleModel roleModel)
+    {
+        rolesRepository.Save(mapper.Map<Entities.Models.Role>(roleModel));
+        return roleModel;
+    }
+
     public void DeleteRole(Guid id)
     {
         var roleToDelete = rolesRepository.GetById(id);

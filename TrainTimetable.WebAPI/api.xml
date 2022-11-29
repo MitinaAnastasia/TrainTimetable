@@ -72,6 +72,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TrainTimetable.Controllers.RolesController.AddRole(TrainTimetable.Services.Models.RoleModel)">
+            <summary>
+            Add Role
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:TrainTimetable.Controllers.RolesController.UpdateRole(System.Guid,TrainTimetable.WebAPI.Models.UpdateRoleRequest)">
             <summary>
             Update Role
@@ -108,6 +114,12 @@
             Update Ticket
             </summary>
         </member>
+        <member name="M:TrainTimetable.Controllers.TicketsController.AddTicket(TrainTimetable.Services.Models.TicketModel)">
+            <summary>
+            Add Ticket
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:TrainTimetable.Controllers.TicketsController.DeleteTicket(System.Guid)">
             <summary>
             Delete Ticket
@@ -131,6 +143,12 @@
         <member name="M:TrainTimetable.Controllers.TimetablesController.GetTimetables(System.Int32,System.Int32)">
             <summary>
             Get Timetables by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TrainTimetable.Controllers.TimetablesController.AddTimetable(TrainTimetable.Services.Models.TimetableModel)">
+            <summary>
+            Add Timetable
             </summary>
             <returns></returns>
         </member>
@@ -162,6 +180,12 @@
         <member name="M:TrainTimetable.Controllers.TrainsController.GetTrains(System.Int32,System.Int32)">
             <summary>
             Get Trains by pages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TrainTimetable.Controllers.TrainsController.AddTrain(TrainTimetable.Services.Models.TrainModel)">
+            <summary>
+            Add Train
             </summary>
             <returns></returns>
         </member>

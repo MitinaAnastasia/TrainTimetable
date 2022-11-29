@@ -51,6 +51,12 @@ public class TicketService : ITicketService
         };
     }
 
+    TicketModel ITicketService.AddTicket(TicketModel ticketModel)
+    {
+        ticketsRepository.Save(mapper.Map<Entities.Models.Ticket>(ticketModel));
+        return ticketModel;
+    }
+
     public TicketModel UpdateTicket(Guid id, UpdateTicketModel ticket)
     {
         var existingTicket = ticketsRepository.GetById(id);

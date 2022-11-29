@@ -7,6 +7,7 @@ public interface ITrainService
     TrainModel GetTrain(Guid id);
 
     TrainModel UpdateTrain(Guid id, UpdateTrainModel train);
+    TrainModel AddTrain (TrainModel trainModel);
 
     void DeleteTrain(Guid id);
 

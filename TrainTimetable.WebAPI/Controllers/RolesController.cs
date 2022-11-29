@@ -37,6 +37,17 @@ namespace TrainTimetable.Controllers
             return Ok(mapper.Map<PageResponse<RolePreviewResponse>>(pageModel));
         }
 
+        /// <summary>
+        /// Add Role
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult AddRole([FromBody] RoleModel role)
+        {
+            var response = roleService.AddRole(role);
+            return Ok(response);
+        }
+
 
         /// <summary>
         /// Update Role
