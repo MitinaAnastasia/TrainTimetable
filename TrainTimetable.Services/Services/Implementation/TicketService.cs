@@ -10,6 +10,7 @@ public class TicketService : ITicketService
 {
     private readonly IRepository<Ticket> ticketsRepository;
     private readonly IMapper mapper;
+
     public TicketService(IRepository<Ticket> ticketsRepository, IMapper mapper)
     {
         this.ticketsRepository = ticketsRepository;
@@ -53,8 +54,8 @@ public class TicketService : ITicketService
 
     TicketModel ITicketService.AddTicket(TicketModel ticketModel)
     {
-        ticketsRepository.Save(mapper.Map<Entities.Models.Ticket>(ticketModel));
-        return ticketModel;
+        var ticket = mapper.Map<Entities.Models.Ticket>(ticketModel);
+        return mapper.Map<TicketModel>(ticketsRepository.Save(ticket));
     }
 
     public TicketModel UpdateTicket(Guid id, UpdateTicketModel ticket)

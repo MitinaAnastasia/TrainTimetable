@@ -18,6 +18,7 @@ public class PresentationProfile : Profile
 
         CreateMap<UserModel, UserResponse>().ReverseMap();;
         CreateMap<UpdateUserRequest, UpdateUserModel>().ReverseMap();;
+        CreateMap<UserModel, UserPreviewResponse>().ReverseMap();;
 
         #endregion
 
@@ -44,6 +45,7 @@ public class PresentationProfile : Profile
 
         CreateMap<TicketModel, TicketResponse>().ReverseMap();;
         CreateMap<UpdateTicketRequest, UpdateTicketModel>().ReverseMap();;
+        CreateMap<TicketModel, TicketPreviewResponse>().ReverseMap();;
 
         #endregion
 
@@ -52,6 +54,7 @@ public class PresentationProfile : Profile
 
         CreateMap<RoleModel, RoleResponse>().ReverseMap();;
         CreateMap<UpdateRoleRequest, UpdateRoleModel>().ReverseMap();;
+        CreateMap<RoleModel, RolePreviewResponse>().ReverseMap();;
 
         #endregion
     }
