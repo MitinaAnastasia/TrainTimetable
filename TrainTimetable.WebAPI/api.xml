@@ -114,7 +114,7 @@
             Update Ticket
             </summary>
         </member>
-        <member name="M:TrainTimetable.Controllers.TicketsController.AddTicket(TrainTimetable.Services.Models.TicketModel)">
+        <member name="M:TrainTimetable.Controllers.TicketsController.AddTicket(System.Guid,System.Guid,System.Guid,TrainTimetable.Services.Models.TicketModel)">
             <summary>
             Add Ticket
             </summary>

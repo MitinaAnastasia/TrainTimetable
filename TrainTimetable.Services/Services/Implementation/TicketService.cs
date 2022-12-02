@@ -56,8 +56,9 @@ public class TicketService : ITicketService
     {
         if(ticketsRepository.GetAll(x => x.Id == ticketModel.Id).FirstOrDefault()!=null)
         {
-            throw new Exception ("attempt to create a non-unique object");
+            throw new Exception ("Attempt to create a non-unique object!");
         }
+        
         TicketModel createTicket = new TicketModel();
         createTicket.TimetableId = ticketModel.TimetableId;
         createTicket.TrainId = ticketModel.TrainId;

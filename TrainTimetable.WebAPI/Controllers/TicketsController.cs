@@ -67,9 +67,9 @@ namespace TrainTimetable.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult AddTicket([FromBody] TicketModel ticket)
+        public IActionResult AddTicket([FromQuery] Guid TimetableId, [FromQuery] Guid TrainId, [FromQuery] Guid UserId,  [FromBody] TicketModel ticket)
         {
-            var response = ticketService.AddTicket(ticket);
+            var response = ticketService.AddTicket(TimetableId, TrainId, UserId, ticket);
             return Ok(response);
         }
 

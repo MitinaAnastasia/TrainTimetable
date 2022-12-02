@@ -7,7 +7,7 @@ public interface ITicketService
     TicketModel GetTicket(Guid id);
 
     TicketModel UpdateTicket(Guid id, UpdateTicketModel ticket);
-    TicketModel AddTicket(TicketModel ticketModel);
+    TicketModel AddTicket(Guid TimetableId, Guid TrainId, Guid UserId, TicketModel ticketModel);
 
     void DeleteTicket(Guid id);
 
