@@ -52,10 +52,20 @@ public class TicketService : ITicketService
         };
     }
 
-    TicketModel ITicketService.AddTicket(TicketModel ticketModel)
+    TicketModel ITicketService.AddTicket(Guid TimetableId, Guid TrainId, Guid UserId, TicketModel ticketModel)
     {
-        var ticket = mapper.Map<Entities.Models.Ticket>(ticketModel);
-        return mapper.Map<TicketModel>(ticketsRepository.Save(ticket));
+        if(ticketsRepository.GetAll(x => x.Id == ticketModel.Id).FirstOrDefault()!=null)
+        {
+            throw new Exception ("attempt to create a non-unique object");
+        }
+        TicketModel createTicket = new TicketModel();
+        createTicket.TimetableId = ticketModel.TimetableId;
+        createTicket.TrainId = ticketModel.TrainId;
+        createTicket.UserId = ticketModel.UserId;
+        createTicket.PlaceNumber = ticketModel.PlaceNumber;
+        ticketsRepository.Save(mapper.Map<Ticket>(createTicket));
+
+        return createTicket;
     }
 
     public TicketModel UpdateTicket(Guid id, UpdateTicketModel ticket)
