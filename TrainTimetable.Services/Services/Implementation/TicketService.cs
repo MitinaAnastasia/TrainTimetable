@@ -9,11 +9,18 @@ namespace TrainTimetable.Services.Implementation;
 public class TicketService : ITicketService
 {
     private readonly IRepository<Ticket> ticketsRepository;
+    private readonly IRepository<Train> trainsRepository;
+    private readonly IRepository<User> usersRepository;
+    private readonly IRepository<Timetable> timetablesRepository;
     private readonly IMapper mapper;
 
-    public TicketService(IRepository<Ticket> ticketsRepository, IMapper mapper)
+    public TicketService(IRepository<Ticket> ticketsRepository, IRepository<Train> trainsRepository, IRepository<User> usersRepositor,
+     IRepository<Timetable> timetablesRepository, IMapper mapper)
     {
         this.ticketsRepository = ticketsRepository;
+        this.trainsRepository = trainsRepository;
+        this.usersRepository = usersRepositor;
+        this.timetablesRepository = timetablesRepository;
         this.mapper = mapper;
     }
 
@@ -57,6 +64,21 @@ public class TicketService : ITicketService
         if(ticketsRepository.GetAll(x => x.Id == ticketModel.Id).FirstOrDefault()!=null)
         {
             throw new Exception ("Attempt to create a non-unique object!");
+        }
+
+        if(trainsRepository.GetAll(x => x.Id == ticketModel.TrainId).FirstOrDefault() == null)
+        {
+            throw new Exception ("The object does not exist in the database!");
+        }
+
+         if(usersRepository.GetAll(x => x.Id == ticketModel.UserId).FirstOrDefault() == null)
+        {
+            throw new Exception ("The object does not exist in the database!");
+        }
+
+         if(timetablesRepository.GetAll(x => x.Id == ticketModel.TimetableId).FirstOrDefault() == null)
+        {
+            throw new Exception ("The object does not exist in the database!");
         }
         
         TicketModel createTicket = new TicketModel();
