@@ -1,6 +1,7 @@
 using TrainTimetable.WebAPI.AppConfiguration.ApplicationExtensions;
 using TrainTimetable.WebAPI.AppConfiguration.ServicesExtensions;
 using Serilog;
+using TrainTimetable.WebAPI.AppConfiguration;
 using TrainTimetable.Entities;
 using Microsoft.EntityFrameworkCore;
 using TrainTimetable.Repository;
@@ -18,14 +19,17 @@ builder.Services.AddDbContextConfiguration(configuration);
 builder.Services.AddVersioningConfiguration(); //add api versioning
 builder.Services.AddMapperConfiguration();
 builder.Services.AddControllers();
-builder.Services.AddSwaggerConfiguration(); //add swagger configuration
+builder.Services.AddSwaggerConfiguration(configuration); //add swagger configuration
 builder.Services.AddRepositoryConfiguration();
 builder.Services.AddBusinessLogicConfiguration();
+builder.Services.AddAuthorizationConfiguration(configuration);
 
 builder.Services.AddScoped<DbContext, Context>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
+
+//await RepositoryInitializer.InitializeRepository(app.Services);
 
 app.UseSerilogConfiguration(); 
 
@@ -37,9 +41,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseAuthorizationConfiguration();
+app.UseMiddleware(typeof(ExceptionsMiddleware));
 
 app.MapControllers();
+
 
 try
 {

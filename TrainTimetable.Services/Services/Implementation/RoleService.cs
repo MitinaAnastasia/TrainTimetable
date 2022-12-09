@@ -18,6 +18,10 @@ public class RoleService : IRoleService
 
     RoleModel IRoleService.AddRole(RoleModel roleModel)
     {
+        if(rolesRepository.GetAll(x => x.Id == roleModel.Id).FirstOrDefault()!=null)
+        {
+            throw new Exception ("Attempt to create a non-unique object!");
+        }
         rolesRepository.Save(mapper.Map<Entities.Models.Role>(roleModel));
         return roleModel;
     }

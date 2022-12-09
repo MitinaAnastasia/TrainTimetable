@@ -1,3 +1,4 @@
+using Duende.IdentityServer.Models;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace TrainTimetable.WebAPI.AppConfiguration.ApplicationExtensions
@@ -22,7 +23,11 @@ namespace TrainTimetable.WebAPI.AppConfiguration.ApplicationExtensions
                 {
                     options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName);
                 };
+
+                options.OAuthClientId("swagger");
+                options.OAuthClientSecret("swagger");
             });
+
         }
     }
 }

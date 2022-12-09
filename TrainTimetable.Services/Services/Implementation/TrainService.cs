@@ -53,6 +53,10 @@ public class TrainService : ITrainService
 
     TrainModel ITrainService.AddTrain(TrainModel trainModel)
     {
+        if(trainsRepository.GetAll(x => x.Id == trainModel.Id).FirstOrDefault()!=null)
+        {
+            throw new Exception ("Attempt to create a non-unique object!");
+        }
         trainsRepository.Save(mapper.Map<Entities.Models.Train>(trainModel));
         return trainModel;
     }

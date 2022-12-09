@@ -16,5 +16,10 @@ public static partial class ServicesExtensions
         services.AddScoped<ITimetableService, TimetableService>();
         services.AddScoped<ITicketService, TicketService>();
         services.AddScoped<IRoleService, RoleService>();
+
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthService, AuthService>();
+
+
     }
 }

@@ -2,6 +2,7 @@ using AutoMapper;
 using TrainTimetable.Services.Abstract;
 using TrainTimetable.Services.Models;
 using TrainTimetable.WebAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TrainTimetable.Controllers
@@ -13,6 +14,7 @@ namespace TrainTimetable.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserService userService;

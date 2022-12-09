@@ -1,6 +1,6 @@
 namespace TrainTimetable.Entities.Models;
 
-public abstract class BaseEntity
+public abstract class BaseEntity : IBaseEntity
 {
     public Guid Id { get; set; }
     public DateTime CreationTime { get; set; }
@@ -17,4 +17,5 @@ public abstract class BaseEntity
         CreationTime = DateTime.UtcNow;
         ModificationTime = DateTime.UtcNow;
     }
+
 }

@@ -52,6 +52,10 @@ public class TimetableService : ITimetableService
 
     TimetableModel ITimetableService.AddTimetable(TimetableModel timetableModel)
     {
+        if(timetablesRepository.GetAll(x => x.Id == timetableModel.Id).FirstOrDefault()!=null)
+        {
+            throw new Exception ("Attempt to create a non-unique object!");
+        }
         timetablesRepository.Save(mapper.Map<Entities.Models.Timetable>(timetableModel));
         return timetableModel;
     }
