@@ -29,7 +29,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
-//await RepositoryInitializer.InitializeRepository(app.Services);
+await RepositoryInitializer.InitializeRepository(app.Services);
 
 app.UseSerilogConfiguration(); 
 
