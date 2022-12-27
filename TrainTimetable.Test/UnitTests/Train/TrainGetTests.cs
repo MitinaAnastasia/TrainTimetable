@@ -18,9 +18,9 @@ public partial class TrainTests
             FirstStation = "SPB",
             LastStation  = "Kursk"
         };
-
-        var trainId = new Guid("E40B66BC-84CE-407D-A3B4-033A340D1E68");
-        var train = trainService.GetTrain(trainId);
+        
+        var newTrain = trainService.AddTrain(model);
+        var train = trainService.GetTrain(newTrain.Id);
 
         Assert.AreEqual(model.TrainNumber, train.TrainNumber);
         Assert.AreEqual(model.FirstStation, train.FirstStation);
@@ -30,11 +30,11 @@ public partial class TrainTests
     [Test]
     public async Task GetTrain_NotExisting()
     {
-        var trainId = new Guid("E40B66BC-84CE-407D-A3B4-033A340D1E68");
+        var trainId = Guid.NewGuid();
 
         Assert.Throws<Exception>( ()=>
         {
             trainService.GetTrain(trainId);
-        });   
+        }); 
     }
 }

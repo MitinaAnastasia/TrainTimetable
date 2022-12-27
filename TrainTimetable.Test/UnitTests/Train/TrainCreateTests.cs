@@ -29,7 +29,7 @@ public partial class TrainTests
     }
 
     [Test]
-    public async Task CreateTrain_NotExisting()
+    public async Task CreateTrain_AlreadyExists()
     {
         var model = new TrainModel(){
             TrainNumber = "number",

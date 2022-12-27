@@ -10,6 +10,7 @@ public partial class UserTests : UnitTest
 {
     private  IAuthService authService;
     private  IUserService userService;
+    private IRoleService roleService;
     private  IRepository<User> userRepository;
     
     public async override Task OneTimeSetUp()
@@ -17,6 +18,7 @@ public partial class UserTests : UnitTest
         await base.OneTimeSetUp();
         authService = services.Get<IAuthService>();
         userService = services.Get<IUserService>();
+        roleService = services.Get<IRoleService>();
         userRepository = services.Get<IRepository<User>>();
     }
 

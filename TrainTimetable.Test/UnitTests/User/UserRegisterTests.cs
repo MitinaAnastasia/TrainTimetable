@@ -13,10 +13,16 @@ public partial class UserTests
     [Test]
     public async Task RegisterUser_Success()
     {
+        var modelRole = new RoleModel(){
+            RoleName = "Admin"
+        };
+
+        var roleModel = roleService.AddRole(modelRole);
+
         var model = new RegisterUserModel(){
             Login = "test@test",
             Password = "Test",
-            RoleId = new Guid("B7FCBD5B-BD20-4F15-B9E8-7F7DFA3D7259")        
+            RoleId = roleModel.Id        
         };
 
         var resultModel = await authService.RegisterUser(model);
@@ -33,10 +39,16 @@ public partial class UserTests
     [Test]
     public async Task RegisterUser_EmailExists()
     {
+        var modelRole = new RoleModel(){
+            RoleName = "Admin"
+        };
+
+        var roleModel = roleService.AddRole(modelRole);
+
         var model = new RegisterUserModel(){
             Login = "test@test",
             Password = "Test",
-            RoleId = new Guid("B7FCBD5B-BD20-4F15-B9E8-7F7DFA3D7259")            
+            RoleId = roleModel.Id           
         };
 
         var resultModel = await authService.RegisterUser(model);
@@ -50,10 +62,16 @@ public partial class UserTests
     [TestCaseSource(typeof(UserCaseSource),nameof(UserCaseSource.InvalidPasswords))]
     public async Task RegisterUser_PasswordIsInvalid(string password)
     {
+        var modelRole = new RoleModel(){
+            RoleName = "Admin"
+        };
+
+        var roleModel = roleService.AddRole(modelRole);
+
         var model = new RegisterUserModel(){
             Login = "test@test",
             Password = password,
-            RoleId = new Guid("B7FCBD5B-BD20-4F15-B9E8-7F7DFA3D7259")            
+            RoleId = roleModel.Id            
         };
 
         Assert.ThrowsAsync<LogicException>(async ()=>
